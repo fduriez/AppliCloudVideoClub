@@ -1,5 +1,4 @@
-
-/******************************************************** mongod application ******************************************************/
+# mongod application 
 
 Prerequisites:
 	npm install mongodb
@@ -8,9 +7,10 @@ Prerequisites:
 Installing
 	need to install mongodb 3.2
 
+---
 Launch command below
 
-/***************************************** create folder in /data/   ******************************/
+# create folder in /data/
 //If you do an error, you have to empty each of this folder before to continue
 
 	/data/dbProjetCloud/ConfigServer/config1
@@ -25,8 +25,8 @@ Launch command below
 	/data/dbProjetCloud/sh3rs2
 	/data/dbProjetCloud/sh3rs3
 
-/********************************* start mongod server********************************************/
-
+---
+# start mongod server
 start mongod --configsvr --replSet configReplSet --port 27019 --dbpath /data/dbProjetCloud/ConfigServer/config1
 start mongod --configsvr --replSet configReplSet --port 27020 --dbpath /data/dbProjetCloud/ConfigServer/config2
 start mongod --shardsvr --replSet sh1 --port 27031 --dbpath /data/dbProjetCloud/sh1rs1
@@ -39,11 +39,13 @@ start mongod --shardsvr --replSet sh3 --port 27037 --dbpath /data/dbProjetCloud/
 start mongod --shardsvr --replSet sh3 --port 27038 --dbpath /data/dbProjetCloud/sh3rs2
 start mongod --shardsvr --replSet sh3 --port 27039 --dbpath /data/dbProjetCloud/sh3rs3
 
-/***********************************  start mongos *******************************************************/
+---
+# start mongos
 	
 start mongos --configdb configReplSet/localhost:27019 --port 27017
 
-/************************************ config replicaset **************************************************/
+---
+# config replicaset
 //replace <PC_NAME> with the name of your PC 
 
 mongo --port 27019 -eval "rs.initiate();"
@@ -58,8 +60,8 @@ mongo --port 27034 -eval "rs.add(\"<PC_NAME>:27035\");rs.add(\"<PC_NAME>:27036\"
 mongo --port 27037 -eval "rs.initiate();"
 mongo --port 27037 -eval "rs.add(\"<PC_NAME>:27038\");rs.add(\"<PC_NAME>:27039\");"
 		
-		
-/*************************************** create shards and database with sharding tag*****************************/
+---
+# create shards and database with sharding tag
 		
 mongo --port 27017
 	sh.addShard( "sh1/<PC_NAME>:27031");
@@ -84,11 +86,13 @@ mongo --port 27017
 	db.Rental.createIndex({"store_id":1});
 	sh.shardCollection("ProjetCloud.Rental",{"store_id":1});
 	
+---
+# run nodejs programme to import SQL database in mongodb
 
-/***************************** run nodejs programme to import SQL database in mongodb *******************/
 node SqlToMongo.js
 
+---
+# run Application
 
-/***************************** run Application **********************************/
 node application.js
 go to http://localhost:3000
