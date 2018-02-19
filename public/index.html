@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>No SQL Project </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/agency.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Sakila</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#user">Standard User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Analyst</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#admin">Administrator</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">Welcome To Our Movie Rental Store !</div>
+          <div class="intro-heading text-uppercase">Let's Search</div>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#user">Start as Standard User</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- USER -->
+    <section id="user">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Standard User </h2>
+            <h3 class="section-subheading text-muted">Here are the requets available for a Standard User.</h3>
+          </div>
+        </div>
+        <div class="row" id="movie_inf">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-12">
+                <h3> Get information about a movie.</h3><br/>
+                <h3 class="section-subheading text-muted">Example : "Dinosaure", "Gold finger" or "Dino", "Gold"</h3>
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group">
+             <select class="form-control" id="store2_ddl" placeholder="Select a Store">
+               <option value=""> All Stores</option>
+             </select>
+           </div>
+           </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+              <input class="form-control"  type="text" id="movie_search" placeholder="Enter a Movie name"/>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="search_movie_inf()">Search</button>
+            </div>
+			<div class="col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="hide_result('result_movie')">Hide Result</button>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden" id="result_movie">
+          <label>Result:</label>
+          <div id="movie_search_result"></div>
+        </div>
+      </div> <br/>
+       <div class="row" id="movie_available_category">
+         <div class="col-lg-12">
+           <div class="row">
+             <div class="col-lg-12">
+               <h3> Get available movie list for a Category</h3><br/>
+               <h3 class="section-subheading text-muted">Example : Select a category and a store</h3>
+           </div>
+         </div>
+         <div class="row">
+           <div class="col-lg-4">
+             <div class="form-group">
+               <select class="form-control" id="category_ddl" placeholder="Select a Category"></select>
+             </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+             <select class="form-control" id="store_ddl" placeholder="Select a Store">
+               <option value=""> All Stores</option>
+             </select>
+           </div>
+           </div>
+           <div class="col-lg-2">
+             <button type="button" class="btn btn-primary" onclick="search_movie_category()">Search</button>
+           </div>
+			<div class="col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="hide_result('result_available')">Hide Result</button>
+            </div>
+         </div>
+       </div>
+       <div class="row hidden" id="result_available">
+         <label>Result:</label>
+         <div id="category_search_result"></div>
+       </div>
+      </div> <br/>
+      <div class="row" id="movie_actor">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12">
+              <h3> Get list of movies with my favorite actor.</h3><br/>
+              <h3 class="section-subheading text-muted">Example : "Penelope", "Guiness", "Bob", "Fawcet"</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="form-group">
+              <input class="form-control"  type="text" id="actor_search" placeholder="Enter an actor name or last name"/>
+            </div>
+          </div>
+          <div class="col-lg-2">
+            <button type="button" class="btn btn-primary" onclick="search_movie_actor()">Search</button>
+          </div>
+			<div class="col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="hide_result('result_actor')">Hide Result</button>
+            </div>
+        </div>
+      </div>
+      <div class="row hidden" id="result_actor">
+        <label>Result:</label>
+        <div id="actor_search_result"></div>
+      </div>
+     </div><br/>
+     <div class="row" id="list">
+       <div class="col-lg-12">
+         <div class="row">
+           <div class="col-lg-12">
+             <h3> TOP 10 of movies rent.</h3><br/>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-lg-10">
+           <button type="button" class="btn btn-primary" onclick="get_top()">Get TOP 10</button>
+         </div>
+		 <div class="col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="hide_result('result_top')">Hide Result</button>
+          </div>
+       </div>
+     </div>
+     <div class="row hidden" id="result_top">
+       <label>Result:</label>
+       <div id="top_result"></div>
+     </div>
+    </div><br/>
+    </section>
+
+    <!-- ANALYSTE -->
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Analyst</h2>
+            <h3 class="section-subheading text-muted">Here are the requets available for an Analyst.</h3>
+          </div>
+        </div>
+        <div class="row" id="year_month">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-12">
+                <h3 class="text-white"> Number of movies rent for a date.</h3><br/>
+                <h3 class="section-subheading text-muted">Example : July 2005 </h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="form-group">
+                <select class="form-control" id="month_ddl" placeholder="Select a month">
+                  <option value="1"> January</option>
+                  <option value="2"> February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">August</option>
+                  <option value="9">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <select class="form-control" id="year_ddl" placeholder="Select a year">
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+              </select>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="search_month_year()">Search</button>
+            </div>
+			<div class="col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="hide_result('result_month')">Hide Result</button>
+          </div>
+          </div>
+        </div>
+        <div class="row hidden text-white" id="result_month">
+          <label>Result:</label>
+          <div id="month_year_result"></div>
+        </div>
+       </div><br/>
+       <div class="row" id="category_store">
+         <div class="col-lg-12">
+           <div class="row">
+             <div class="col-lg-12">
+               <h3 class="text-white"> TOP Category most rent for a store.</h3><br/>
+           </div>
+         </div>
+         <div class="row">
+           <div class="col-lg-8">
+             <div class="form-group">
+               <select class="form-control" id="store3_ddl" placeholder="Select a store">
+			   <option value=""> All Stores</option>
+               </select>
+             </div>
+           </div>
+           <div class="col-lg-2">
+             <button type="button" class="btn btn-primary" onclick="search_category_store()">Search</button>
+           </div>
+		   <div class="col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="hide_result('result_category')">Hide Result</button>
+          </div>
+         </div>
+       </div>
+       <div class="row hidden text-white" id="result_category">
+         <label>Result:</label>
+         <div id="category_result"></div>
+       </div>
+      </div><br/>
+      </div>
+    </section>
+    <!-- ADMIN -->
+    <section id="admin">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Administrator </h2>
+            <h3 class="section-subheading text-muted">Here are the requets available for Administrator.</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10">
+            <button type="button" class="btn btn-primary" onclick="get_admin()">Admin Info</button>
+          </div>
+		   <div class="col-lg-2">
+              <button type="button" class="btn btn-primary" onclick="hide_result('result_admin')">Hide Result</button>
+          </div>
+        </div>
+        <div class="row" id="result_admin">
+          <h3>Result:</h3>
+          <div id="admin_result"></div>
+        </div>
+      </div><br/>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Fabien, Lounes, Shehrazade</span>
+          </div>
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+    <script src="js/index.js"></script>
+
+  </body>
+
+</html>

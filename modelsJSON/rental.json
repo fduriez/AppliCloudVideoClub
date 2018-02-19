@@ -1,0 +1,8 @@
+{
+"_id":1,
+"rental_date":"date",
+"customer_id": 0,
+"film_id":0,
+"store_id": 0, 
+"return_date": "date"
+}

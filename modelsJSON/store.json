@@ -1,0 +1,9 @@
+{
+	"_id":0,
+	"address":{"address":"",
+				"district":"",
+				"city":"",
+				"country":"",
+				"postal_code":"",
+				"phone":""}
+}
