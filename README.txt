@@ -92,9 +92,3 @@ node SqlToMongo.js
 /***************************** run Application **********************************/
 node application.js
 go to http://localhost:3000
-
-
-Authors
-	Fabien Duriez
-	Shehrazade haimeur
-    	Lounes FENIRI
