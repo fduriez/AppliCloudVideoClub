@@ -64,7 +64,7 @@ __Installing__
 ---
 ### create shards and database with sharding tag
 		
-mongo --port 27017
+    mongo --port 27017
 	sh.addShard( "sh1/<PC_NAME>:27031");
 	sh.addShard( "sh2/<PC_NAME>:27034");
 	sh.addShard( "sh3/<PC_NAME>:27037");
@@ -96,4 +96,4 @@ mongo --port 27017
 ### run Application
 
     node application.js
-go to [localhost](http://localhost:3000)
+Then go to [localhost](http://localhost:3000)
