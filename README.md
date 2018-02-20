@@ -1,10 +1,12 @@
-# mongod application 
+# AppliCloudVideoClub
 
-Prerequisites:
-	npm install mongodb
-	npm install express
+mongod application 
+==
+__Prerequisites:__  
+	npm install mongodb  
+	npm install express  
 
-Installing
+__Installing__
 	need to install mongodb 3.2
 
 ---
