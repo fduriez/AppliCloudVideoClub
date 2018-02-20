@@ -1,5 +1,11 @@
 # AppliCloudVideoClub
 
+## Introduction
+
+The goal of this project is to transform an SQL Database into a NoSQL database in mongodb. And then to make a web application that allow you to launch some query on the new database.
+
+---
+To use this App please follow the instructions below :
 
 __Prerequisites:__  
 	npm install mongodb  
