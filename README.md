@@ -6,6 +6,8 @@ The goal of this project is to transform an SQL Database into a NoSQL database i
 
 If you want to see the SQL Database we used, go to [Sakila](https://relational.fit.cvut.cz/dataset/Sakila)
 
+If you want to know more about our process to realize this project, take a look at the file `Dossier_Projet_NOSQL.pdf` at the root of this repository
+
 To use this App please follow the instructions below :
 
 ---
