@@ -1,13 +1,13 @@
 # AppliCloudVideoClub
 
-mongod application 
-==
+## mongod application 
+
 __Prerequisites:__  
 	npm install mongodb  
 	npm install express  
 
-__Installing__
-	need to install mongodb 3.2
+__Installing__  
+	need to install mongodb 3.2  
 
 ---
 Launch command below
